@@ -2,23 +2,23 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import SearchExperience from './SearchExperience.js';
+
+import { Container, Header} from 'semantic-ui-react'
+
+const PARAMS = new URLSearchParams(window.location.search);
+// use like this
+// PARAMS.get('name')
+
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container text style={{ margin: '2em' }}>
+        <Header as='h1'>Jasmine Humbert</Header>
+      </Container>
+
+      <SearchExperience></SearchExperience>
     </div>
   );
 }
