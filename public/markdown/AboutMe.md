@@ -1,8 +1,9 @@
 ## Welcome to my Portfolio Site!
 ### I'm a security focused full-stack engineer and am currently looking for a great job in San Francisco.
 
+### I made this website to make it as easy as possible for a potential employer to figure out what my skills are. Click 'Search My Experience' above to see what I know and how I learned it.
+
 ## My skills
-I made this website to make it as easy as possible for a potential employer to figure out what my skills are. Click 'Search My Experience' above to see what I know and how I learned it.
 
 ### Full Stack
 When I say I'm a full-stack developer I do mean that I have a broad area of expertise creating web applications. I've managed/written loads of docker containers, built sensible APIs, written crazy MongoDB queries, and I even know how to center things in CSS! This website is written in React which is my frontend framework of choice. My favorite backend frameworks are Flask and Node/Express.

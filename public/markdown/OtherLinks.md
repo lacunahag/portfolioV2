@@ -1,3 +1,6 @@
+
+![Picture of me sitting on a rock above an alpine lake](me.jpg)
+
 # Links
 ### [Github](https://github.com/lacunahag) is the best places to see my most recent side projects
  
@@ -13,5 +16,3 @@ Contact me on any of the above platforms or email me at [jasmine@humbert.dev](ma
 If you like PGP encryption and would like to send me a secret message, I am lacunahag on [Keybase.io](Keybase.io) and my public key is:
 
 <public key>
-
-My pronouns are she/her
