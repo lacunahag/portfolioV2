@@ -8,8 +8,8 @@ class SearchExperience extends React.Component {
   render() {
     return <div className='SearchExperience'>
       <Header as='p'>Search Experience</Header>
-      <TagSearch />
-      <ExperienceCards />
+      <TagSearch classname="pull-left" />
+      <ExperienceCards classname="pull-right" />
     </div>
   }
 }
@@ -35,6 +35,7 @@ class TagSearch extends React.Component {
   render() {
     return <div className="TagSearch">
       <Search />
+      <h2>Filter by technology</h2>
       <div className='LabelArea'>
         <Tag
           name='Python'
@@ -49,6 +50,7 @@ class TagSearch extends React.Component {
   }
 }
 
+// should be a function
 class ExperienceCards extends React.Component {
   render() {
     return <div className='ExperienceCards'>

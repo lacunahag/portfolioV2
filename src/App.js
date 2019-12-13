@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 
 import SearchExperience from './components/SearchExperience.js';
 import MarkdownTab from './components/MarkdownTab.js';
@@ -17,21 +16,23 @@ function App() {
       render: () => <div><MarkdownTab markdownPath="/markdown/OtherLinks.md" /></div>,
     },
     {
-      menuItem: 'Hire Me',
-      render: () => <MarkdownTab markdownPath="/markdown/AboutMe.md" />,
-    },
-    {
       menuItem: 'Search My Experience',
       render: () => <Tab.Pane attached={false}> <SearchExperience /> </Tab.Pane>,
+    },
+    {
+      menuItem: 'More About Me',
+      render: () => <MarkdownTab markdownPath="/markdown/AboutMe.md" />,
     },
   ]
 
   return (
     <div className="App">
-      <Container text style={{ margin: '2em' }}>
-        <Header as='h1'>Jasmine Humbert</Header>
-      </Container>
-      <Tab menu={{ text: true }} panes={panes} />
+      <div className="bodyContent">
+        <Container text style={{ margin: '2em' }}>
+          <Header as='h1'>Jasmine Humbert</Header>
+        </Container>
+        <Tab menu={{ text: true }} panes={panes} />
+      </div>
       <div className="footer">
         <br></br>
         <hr></hr>

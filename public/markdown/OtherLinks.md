@@ -13,6 +13,4 @@
 # How to contact me
 Contact me on any of the above platforms or email me at [jasmine@humbert.dev](mailto:jasmine@humbert.dev).
 
-If you like PGP encryption and would like to send me a secret message, I am lacunahag on [Keybase.io](Keybase.io) and my public key is:
-
-<public key>
+If you like PGP encryption and would like to send me a super cool secret hacker message I am lacunahag on [Keybase.io](Keybase.io).
