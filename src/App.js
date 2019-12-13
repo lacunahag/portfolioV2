@@ -13,16 +13,16 @@ import { Container, Header, Tab } from 'semantic-ui-react'
 function App() {
   const panes = [
     {
-      menuItem: 'About Me',
+      menuItem: 'Contact',
+      render: () => <div><MarkdownTab markdownPath="/markdown/OtherLinks.md" /></div>,
+    },
+    {
+      menuItem: 'Hire Me',
       render: () => <MarkdownTab markdownPath="/markdown/AboutMe.md" />,
     },
     {
       menuItem: 'Search My Experience',
       render: () => <Tab.Pane attached={false}> <SearchExperience /> </Tab.Pane>,
-    },
-    {
-      menuItem: 'Contact',
-      render: () => <div><MarkdownTab markdownPath="/markdown/OtherLinks.md" /></div>,
     },
   ]
 
