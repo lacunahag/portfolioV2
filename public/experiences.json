@@ -1,0 +1,20 @@
+[
+    {
+       "header":"Markov Chain Typo Generator",
+       "meta":"Machine Learning with Python",
+       "description":"Typo generator uses a markov chain written in python to produce funny and weird typos - much like a drunk human would make. It demonstrates usage of data structures like markov chains and histograms. Developing it I learned a lot about writing more efficient code since I initially optimized it for generating text.",
+       "tags":[
+          "Python",
+          "Javascript"
+       ]
+    },
+    {
+       "header":"Troll Mode",
+       "meta":"Abusing cURL and Bash for Mischief",
+       "description":"Troll mode was initially intended - and written - to be a command  line utility for bash. Three days into the project I learned more about the language and environment, realized this made no sense, and deleted the vast majority of code I’d written. The final version was refactored down to a single 23 line file. Since this project is essentially malware (of the harmless prank variety), I learned a lot about linux security.",
+       "tags":[
+          "Bash",
+          "Linux"
+       ]
+    }
+ ]

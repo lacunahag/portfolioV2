@@ -1,383 +1,136 @@
+import React from 'react'
 
-import React from 'react';
+import { Input, Card, Label, Grid, Dropdown } from 'semantic-ui-react'
 
-import { Search, Header, Card, Label, Icon } from 'semantic-ui-react'
-
+// TODO: summary of my experience with each at the top
+const CATEGORIES = ['All', 'Python', 'Javascript', 'Bash', 'Linux', 'React']
 
 class SearchExperience extends React.Component {
-  render() {
-    return <div className='SearchExperience'>
-      <Header as='p'>Search Experience</Header>
-      <TagSearch classname="pull-left" />
-      <ExperienceCards classname="pull-right" />
-    </div>
-  }
-}
-
-class Tag extends React.Component {
-  constructor(props) {
-    super(props)
-    this.name = props.name
-    this.color = props.color
+  constructor () {
+    super()
+    this.state = {
+      experiences: [],
+      category: 'All',
+      search_query: ''
+    }
   }
 
-  render() {
-    return <Label
-      style={{ backgroundColor: this.color }}>
-      {this.name}
-      <Icon
-        name='delete'></Icon>
-    </Label>
+  componentDidMount () {
+    fetch('/experiences.json')
+      .then(response => response.json())
+      .then(json => {
+        this.setState({ experiences: json })
+      })
   }
-}
 
-class TagSearch extends React.Component {
-  render() {
-    return <div className="TagSearch">
-      <Search />
-      <h2>Filter by technology</h2>
-      <div className='LabelArea'>
-        <Tag
-          name='Python'
-          color='#00cc55'
-        />
-        <Tag
-          name='Javascript'
-          color='#ff2288'
-        />
+  handleChangeSearch = (event, data) => {
+    console.log('change search fired')
+    this.setState({ search_query: event.target.value })
+  }
+
+  handleChangeCategory = (event, data) => {
+    this.setState({ category: data.value })
+  }
+
+  // move outside as own function
+  search (params) {
+    console.log('search fired')
+    let results = params.experiences
+    const category = params.category
+    const search_query = params.search_query
+
+    if (category !== 'All') {
+      results = results.filter(
+        result => result.tags.includes(category)
+      )
+    }
+
+    if (search_query) {
+      results = results.filter(result => {
+        const amalgam = Object.values(result)
+          .join(' ')
+          .toLowerCase()
+        const found = amalgam.includes(search_query)
+        if (found) {
+          return result
+        }
+      })
+    }
+
+    console.log(results)
+    return results
+  }
+
+  render () {
+    console.log('render fired')
+    const searchResults = this.search(this.state)
+
+    const categoriesDropdown = CATEGORIES.map(category => {
+      return {
+        key: category,
+        text: category,
+        value: category
+      }
+    })
+
+    return (
+      <div className='SearchExperience'>
+        {/* SEARCH BAR */}
+        <Grid columns={2}>
+          <Grid.Row stretched>
+            <Grid.Column>
+              <Input fluid label='Search' onChange={this.handleChangeSearch} />
+            </Grid.Column>
+            <Grid.Column>
+              <Dropdown
+                placeholder='Filter'
+                fluid
+                selection
+                options={categoriesDropdown}
+                onChange={this.handleChangeCategory}
+              />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+
+        <ExperienceCards cardData={searchResults} classname='pull-right' />
       </div>
+    )
+  }
+}
+
+// renders
+function ExperienceCards (props) {
+  // Props should pass an array of experience objects that looks like:
+
+  const { cardData } = props
+
+  const cards = cardData.map(card => {
+    const tags = card.tags.map(tag => {
+      return (
+        <Label key={tag} name={tag} className={tag}>
+          {tag}
+        </Label>
+      )
+    })
+
+    return (
+      <Card key={card.header}>
+        <Card.Content>
+          <Card.Header>{card.header}</Card.Header>
+          <Card.Meta>{card.meta}</Card.Meta>
+          <Card.Description>{card.description}</Card.Description>
+        </Card.Content>
+        <Card.Content extra>{tags}</Card.Content>
+      </Card>
+    )
+  })
+
+  return (
+    <div className='ExperienceCards'>
+      <Card.Group centered>{cards}</Card.Group>
     </div>
-  }
+  )
 }
 
-// should be a function
-class ExperienceCards extends React.Component {
-  render() {
-    return <div className='ExperienceCards'>
-      <Card.Group centered>
-        <Card>
-          <Card.Content>
-            <Card.Header>Markov Chain Typo Generator</Card.Header>
-            <Card.Meta>Machine Learning with Python</Card.Meta>
-            <Card.Description>
-              Typo generator uses a markov chain written in python to produce funny and weird typos - much like a drunk human would make. It demonstrates usage of data structures like markov chains and histograms. Developing it I learned a lot about writing more efficient code since I initially optimized it for generating text. This project shows some of my best code quality and documentation.
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Tag
-              name='Python'
-              color='#00cc55'
-            />
-            <Tag
-              name='Javascript'
-              color='#ff2288'
-            />
-          </Card.Content>
-        </Card>
-
-
-        <Card>
-          <Card.Content>
-            <Card.Header>Troll Mode</Card.Header>
-            <Card.Meta>Abusing cURL and Bash for Mischief</Card.Meta>
-            <Card.Description>
-              Troll mode was initially intended - and written - to be a command line utility for bash. Three days into the project I learned more about the language and environment, realized this made no sense, and deleted the vast majority of code I’d written. The final version was refactored down to a single 23 line file. Since this project is essentially malware (of the harmless prank variety), I learned a lot about linux security.            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Tag
-              name='Python'
-              color='#00cc55'
-            />
-          </Card.Content>
-        </Card>
-
-
-
-        <Card>
-          <Card.Content>
-            <Card.Header>Computer Science 1.1</Card.Header>
-            <Card.Meta>Intro to Programming</Card.Meta>
-            <Card.Description>
-              Alan Davis' intro to computer science in Python. I learned a lot about the inner workings of Python and got a lot of practice writing it in this demanding course.
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Tag
-              name='Javascript'
-              color='#ff2288'
-            />
-          </Card.Content>
-        </Card>
-
-
-
-
-        <Card>
-          <Card.Content>
-            <Card.Header>Markov Chain Typo Generator</Card.Header>
-            <Card.Meta>Machine Learning with Python</Card.Meta>
-            <Card.Description>
-              Typo generator uses a markov chain written in python to produce funny and weird typos - much like a drunk human would make. It demonstrates usage of data structures like markov chains and histograms. Developing it I learned a lot about writing more efficient code since I initially optimized it for generating text. This project shows some of my best code quality and documentation.
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Tag
-              name='Python'
-              color='#00cc55'
-            />
-            <Tag
-              name='Javascript'
-              color='#ff2288'
-            />
-          </Card.Content>
-        </Card>
-
-
-        <Card>
-          <Card.Content>
-            <Card.Header>Troll Mode</Card.Header>
-            <Card.Meta>Abusing cURL and Bash for Mischief</Card.Meta>
-            <Card.Description>
-              Troll mode was initially intended - and written - to be a command line utility for bash. Three days into the project I learned more about the language and environment, realized this made no sense, and deleted the vast majority of code I’d written. The final version was refactored down to a single 23 line file. Since this project is essentially malware (of the harmless prank variety), I learned a lot about linux security.            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Tag
-              name='Python'
-              color='#00cc55'
-            />
-          </Card.Content>
-        </Card>
-
-
-
-        <Card>
-          <Card.Content>
-            <Card.Header>Pokemon Go Spawn Tracker</Card.Header>
-            <Card.Meta>Django and Google Maps API</Card.Meta>
-            <Card.Description>
-              I was lucky to be part of the Pokemon Go beta during which I tried to make this spawn tracker in time for the release. It uses Django on the backend with the Google Maps API to crowdsource where people have seen certain pokemon out in the world. It is designed to be used on a phone browser.
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Tag
-              name='Javascript'
-              color='#ff2288'
-            />
-          </Card.Content>
-        </Card>
-
-
-        <Card>
-          <Card.Content>
-            <Card.Header>Computer Science 1.1</Card.Header>
-            <Card.Meta>Intro to Programming</Card.Meta>
-            <Card.Description>
-              Alan Davis' intro to computer science in Python. I learned a lot about the inner workings of Python and got a lot of practice writing it in this demanding course.
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Tag
-              name='Javascript'
-              color='#ff2288'
-            />
-          </Card.Content>
-        </Card>
-
-        <Card>
-          <Card.Content>
-            <Card.Header>Troll Mode</Card.Header>
-            <Card.Meta>Abusing cURL and Bash for Mischief</Card.Meta>
-            <Card.Description>
-              Troll mode was initially intended - and written - to be a command line utility for bash. Three days into the project I learned more about the language and environment, realized this made no sense, and deleted the vast majority of code I’d written. The final version was refactored down to a single 23 line file. Since this project is essentially malware (of the harmless prank variety), I learned a lot about linux security.            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Tag
-              name='Python'
-              color='#00cc55'
-            />
-          </Card.Content>
-        </Card>
-
-
-
-        <Card>
-          <Card.Content>
-            <Card.Header>Pokemon Go Spawn Tracker</Card.Header>
-            <Card.Meta>Django and Google Maps API</Card.Meta>
-            <Card.Description>
-              I was lucky to be part of the Pokemon Go beta during which I tried to make this spawn tracker in time for the release. It uses Django on the backend with the Google Maps API to crowdsource where people have seen certain pokemon out in the world. It is designed to be used on a phone browser.
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Tag
-              name='Javascript'
-              color='#ff2288'
-            />
-          </Card.Content>
-        </Card>
-
-
-        <Card>
-          <Card.Content>
-            <Card.Header>Computer Science 1.1</Card.Header>
-            <Card.Meta>Intro to Programming</Card.Meta>
-            <Card.Description>
-              Alan Davis' intro to computer science in Python. I learned a lot about the inner workings of Python and got a lot of practice writing it in this demanding course.
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Tag
-              name='Javascript'
-              color='#ff2288'
-            />
-          </Card.Content>
-        </Card>
-
-        <Card>
-          <Card.Content>
-            <Card.Header>Computer Science 1.1</Card.Header>
-            <Card.Meta>Intro to Programming</Card.Meta>
-            <Card.Description>
-              Alan Davis' intro to computer science in Python. I learned a lot about the inner workings of Python and got a lot of practice writing it in this demanding course.
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Tag
-              name='Javascript'
-              color='#ff2288'
-            />
-          </Card.Content>
-        </Card>
-
-
-
-
-        <Card>
-          <Card.Content>
-            <Card.Header>Markov Chain Typo Generator</Card.Header>
-            <Card.Meta>Machine Learning with Python</Card.Meta>
-            <Card.Description>
-              Typo generator uses a markov chain written in python to produce funny and weird typos - much like a drunk human would make. It demonstrates usage of data structures like markov chains and histograms. Developing it I learned a lot about writing more efficient code since I initially optimized it for generating text. This project shows some of my best code quality and documentation.
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Tag
-              name='Python'
-              color='#00cc55'
-            />
-            <Tag
-              name='Javascript'
-              color='#ff2288'
-            />
-          </Card.Content>
-        </Card>
-
-
-        <Card>
-          <Card.Content>
-            <Card.Header>Troll Mode</Card.Header>
-            <Card.Meta>Abusing cURL and Bash for Mischief</Card.Meta>
-            <Card.Description>
-              Troll mode was initially intended - and written - to be a command line utility for bash. Three days into the project I learned more about the language and environment, realized this made no sense, and deleted the vast majority of code I’d written. The final version was refactored down to a single 23 line file. Since this project is essentially malware (of the harmless prank variety), I learned a lot about linux security.            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Tag
-              name='Python'
-              color='#00cc55'
-            />
-          </Card.Content>
-        </Card>
-
-
-
-        <Card>
-          <Card.Content>
-            <Card.Header>Pokemon Go Spawn Tracker</Card.Header>
-            <Card.Meta>Django and Google Maps API</Card.Meta>
-            <Card.Description>
-              I was lucky to be part of the Pokemon Go beta during which I tried to make this spawn tracker in time for the release. It uses Django on the backend with the Google Maps API to crowdsource where people have seen certain pokemon out in the world. It is designed to be used on a phone browser.
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Tag
-              name='Javascript'
-              color='#ff2288'
-            />
-          </Card.Content>
-        </Card>
-
-
-        <Card>
-          <Card.Content>
-            <Card.Header>Computer Science 1.1</Card.Header>
-            <Card.Meta>Intro to Programming</Card.Meta>
-            <Card.Description>
-              Alan Davis' intro to computer science in Python. I learned a lot about the inner workings of Python and got a lot of practice writing it in this demanding course.
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Tag
-              name='Javascript'
-              color='#ff2288'
-            />
-          </Card.Content>
-        </Card>
-
-        <Card>
-          <Card.Content>
-            <Card.Header>Troll Mode</Card.Header>
-            <Card.Meta>Abusing cURL and Bash for Mischief</Card.Meta>
-            <Card.Description>
-              Troll mode was initially intended - and written - to be a command line utility for bash. Three days into the project I learned more about the language and environment, realized this made no sense, and deleted the vast majority of code I’d written. The final version was refactored down to a single 23 line file. Since this project is essentially malware (of the harmless prank variety), I learned a lot about linux security.            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Tag
-              name='Python'
-              color='#00cc55'
-            />
-          </Card.Content>
-        </Card>
-
-
-
-        <Card>
-          <Card.Content>
-            <Card.Header>Pokemon Go Spawn Tracker</Card.Header>
-            <Card.Meta>Django and Google Maps API</Card.Meta>
-            <Card.Description>
-              I was lucky to be part of the Pokemon Go beta during which I tried to make this spawn tracker in time for the release. It uses Django on the backend with the Google Maps API to crowdsource where people have seen certain pokemon out in the world. It is designed to be used on a phone browser.
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Tag
-              name='Javascript'
-              color='#ff2288'
-            />
-          </Card.Content>
-        </Card>
-
-
-        <Card>
-          <Card.Content>
-            <Card.Header>Computer Science 1.1</Card.Header>
-            <Card.Meta>Intro to Programming</Card.Meta>
-            <Card.Description>
-              Alan Davis' intro to computer science in Python. I learned a lot about the inner workings of Python and got a lot of practice writing it in this demanding course.
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <Tag
-              name='Javascript'
-              color='#ff2288'
-            />
-          </Card.Content>
-        </Card>
-
-
-      </Card.Group>
-
-    </div >
-  }
-}
-
-export default SearchExperience;
+export default SearchExperience
