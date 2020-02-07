@@ -4,7 +4,7 @@
 ## Summary of my skills
 
 ### Full Stack
-When I say I'm a full-stack developer I do mean that I have a broad area of expertise creating web applications. I've managed/written loads of docker containers, built sensible APIs, written crazy MongoDB queries, and I even know how to center things in CSS! This website is written in React which is my frontend framework of choice. My favorite backend frameworks are Flask and Node/Express.
+When I say I'm a full-stack developer I do mean that I have a broad area of expertise creating web applications. I've written docker images, built sensible APIs, written crazy MongoDB queries, and I even know how to center things in CSS! This website is written in React which is my frontend framework of choice. My favorite backend frameworks are Flask and Node/Express.
 
 I've also got a bit of experience programming Arduinos and robots. C was the first real programming language I learned as a teenager.
 
