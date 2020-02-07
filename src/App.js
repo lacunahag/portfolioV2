@@ -13,7 +13,7 @@ function App() {
   const panes = [
     {
       menuItem: 'Contact',
-      render: () => <div><MarkdownTab markdownPath="/markdown/OtherLinks.md" /></div>,
+      render: () => <div><MarkdownTab markdownPath="markdown/OtherLinks.md" /></div>,
     },
     {
       menuItem: 'Search My Experience',

@@ -16,7 +16,7 @@ class SearchExperience extends React.Component {
   }
 
   componentDidMount () {
-    fetch('/experiences.json')
+    fetch('experiences.json')
       .then(response => response.json())
       .then(json => {
         this.setState({ experiences: json })
