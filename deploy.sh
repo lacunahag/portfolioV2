@@ -5,12 +5,13 @@
 ( 
     # safety first
     set -e
-    test -z "$(git status --porcelain)" || echo "Please commit or stash changes before deploying" && exit 1
+    test -z "$(git status --porcelain)" || { echo "Please commit or stash changes before deploying";  exit 1; }
     
     ## YEEEEEEEHAW
     git branch -D gh-pages
     git checkout -b gh-pages
 
+    yarn install
     yarn build
     rm -rf src/ public/
 
