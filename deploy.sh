@@ -13,7 +13,7 @@
 
     yarn install
     yarn build
-    rm -rf src/ public/
+    rm -rf src/ public/ README.md
 
     git add -A 
     git commit -m "Deploy"
