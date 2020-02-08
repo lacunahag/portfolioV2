@@ -15,6 +15,8 @@
     yarn build
     rm -rf src/ public/ README.md
 
+    mv build/* .
+
     git add -A 
     git commit -m "Deploy"
     git push origin gh-pages --force # yeet
