@@ -21,7 +21,7 @@ function App() {
     },
     {
       menuItem: 'More About Me',
-      render: () => <MarkdownTab markdownPath="/markdown/AboutMe.md" />,
+      render: () => <MarkdownTab markdownPath="markdown/AboutMe.md" />,
     },
   ]
 
