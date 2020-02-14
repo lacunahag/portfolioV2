@@ -37,12 +37,10 @@ class SearchExperience extends React.Component {
     console.log('search fired')
     let results = params.experiences
     const category = params.category
-    const search_query = params.search_query
+    const search_query = params.search_query.toLowerCase()
 
     if (category !== 'All') {
-      results = results.filter(
-        result => result.tags.includes(category)
-      )
+      results = results.filter(result => result.tags.includes(category))
     }
 
     if (search_query) {
@@ -93,7 +91,13 @@ class SearchExperience extends React.Component {
           </Grid.Row>
         </Grid>
 
+        <br></br>
+        <hr></hr>
+
         <ExperienceCards cardData={searchResults} classname='pull-right' />
+
+        <h4>I haven't quite finished writing up descriptions for every project. Find more stuff I've done on <a href="https://github.com/lacunahag">Github</a> and <a href="https://medium.com/@jasmine.yhumbert">Medium</a>.</h4>
+
       </div>
     )
   }
@@ -114,10 +118,14 @@ function ExperienceCards (props) {
       )
     })
 
+    const title = card.link ? <a href={card.link}>{card.header}</a> : card.header
+
     return (
       <Card key={card.header}>
         <Card.Content>
-          <Card.Header>{card.header}</Card.Header>
+          <Card.Header>
+            {title}
+          </Card.Header>
           <Card.Meta>{card.meta}</Card.Meta>
           <Card.Description>{card.description}</Card.Description>
         </Card.Content>
