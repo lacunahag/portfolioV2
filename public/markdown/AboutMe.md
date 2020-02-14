@@ -14,25 +14,22 @@ One of my top skills is spotting pernicious mistakes in code reviews. I also hav
 ### Technical Writing
 For fun, [I write tech tutorials on Medium](https://medium.com/@jasmine.yhumbert). I like writing about complicated stuff at a 5th grade reading level. My articles do well on Google searches and several thousand people read them every month.
 
-## What kind of job I'm looking for
-My ideal role is at a small startup doing something technically challenging and/or making the world a better place. As long as I'm using technology to make things better (or even just less bad) for everyone I'm happy. Ethics aren't something I'll compromise on so I'll decline contracts with ICE and whatnot. It's important that I'm not subject to Chinese censorship in my job.
+## What kind of job am I looking for?
+My ideal role is at a small company doing something technically challenging or making the world a better place. Company size doesn't matter too much but I like small teams where I don't feel too much like a code monkey. I'd love opportunities to take on more leadership responsibilities and drive technical decisions.
 
-Company size doesn't matter too much but I like small teams where I don't feel too much like a code monkey. I'd love opportunities to take on more leadership responsibilities and drive technical decisions.
+I would appreciate referrals to big companies as well.
 
-Health insurance and a San Francisco developer salary are hard requirements. I'm also paying back an income share agreement so equity/stock options work well for my current situation.
-
-The ability to work from home is nice but I like going to an office too. I love the bay area and am not willing to relocate.
+### Some specific perks I'm looking for
+- Office in the Market Street area
+- Ability to work from home one day/week
+- Good benefits
+- Collaborative environment
 
 ### Don't recruit me for
 - Visual design: I get frustrated easily trying to make things look pretty. I like UX design though!
-- Talking to lots of people all the time: I get recruited for developer relations roles a lot but these are a very bad fit for me! I'm much too introverted.
-
-## My non-professional interests
-If you've really looked through my github you may have found some extra nerdy non-programming related projects. I love linguistics and especially made up languages. I've written entire tabletop RPG settings in my free time for fun. My two favorite things to do with my friends are sing (karaoke is great) and play Dungeons and Dragons.
-
-I also know a few non-made up languages including French, Tahitian, and Spanish. I was raised as a bi-native speaker of French and English. My French has gotten a tiny bit rusty living in the US but with a few weeks of immersion I lose my accent completely and speak both languages natively.
+- Talking to lots of new people all the time: I get recruited for developer relations roles a lot but these are a very bad fit for me! I'm much too introverted.
 
 ### Will I be a good culture fit?
 If you have a company D&D party or a band/choir/acapella group I will be a fantastic culture fit!
 
-Company cultures that value openness, trust, and mentorship are ones where I thrive. I love to help less experienced engineers and learn from my seniors. Because of my unique cultural background I especially appreciate and can easily navigate culturally diverse communities.
+Company cultures that value openness, trust, and mentorship are ones where I thrive. I love to help less experienced engineers and learn from my seniors.
