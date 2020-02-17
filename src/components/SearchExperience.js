@@ -119,6 +119,7 @@ function ExperienceCards (props) {
     })
 
     const title = card.link ? <a href={card.link}>{card.header}</a> : card.header
+    const live_link = card.live_link ? <a href={card.live_link}>{card.live_link_text}</a> : ""
 
     return (
       <Card key={card.header}>
@@ -127,7 +128,11 @@ function ExperienceCards (props) {
             {title}
           </Card.Header>
           <Card.Meta>{card.meta}</Card.Meta>
-          <Card.Description>{card.description}</Card.Description>
+          <Card.Description>
+            {card.description}
+            <br></br>
+            <h4>{live_link}</h4>
+            </Card.Description>
         </Card.Content>
         <Card.Content extra>{tags}</Card.Content>
       </Card>

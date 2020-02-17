@@ -16,11 +16,11 @@ function App() {
       render: () => <div><MarkdownTab markdownPath="markdown/OtherLinks.md" /></div>,
     },
     {
-      menuItem: 'Search My Experience',
+      menuItem: 'Experience',
       render: () => <Tab.Pane attached={false}> <SearchExperience /> </Tab.Pane>,
     },
     {
-      menuItem: 'More About Me',
+      menuItem: 'About Me',
       render: () => <MarkdownTab markdownPath="markdown/AboutMe.md" />,
     },
   ]

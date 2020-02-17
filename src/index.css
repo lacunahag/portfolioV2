@@ -69,3 +69,22 @@ img[src*="me.jpg"] {
 .footer {
   height: 50px;
 }
+
+/**Labels**/
+div.ui.label.Python {
+  color: white;
+  background: green;
+}
+div.ui.label.Javascript {
+  background: pink;
+}
+div.ui.label.Linux {
+  background: orange;
+}
+div.ui.label.Bash {
+  background: cadetblue;
+}
+div.ui.label.React {
+  background: blueviolet;
+  color: rgba(255, 255, 255, 0.9)
+}
