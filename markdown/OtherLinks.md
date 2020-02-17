@@ -10,9 +10,9 @@
 
 ### [Twitter](https://twitter.com/lacunahag): the place for updates and bad jokes about Bash.
 
-### [Medium](https://twitter.com/lacunahag): has my technical writing.
+### [Medium](https://medium.com/@jasmine.yhumbert): has my technical writing.
 
 # How to contact me
 Contact me on any of the above platforms or email me at [jasmine@humbert.dev](mailto:jasmine@humbert.dev).
 
-If you like PGP encryption and would like to send me a super cool secret hacker message I am lacunahag on [Keybase.io](Keybase.io).
+If you like PGP encryption and would like to send me a super cool secret hacker message I am lacunahag on [Keybase.io](https://Keybase.io).
