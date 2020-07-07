@@ -22,14 +22,12 @@ I would appreciate referrals to big companies as well.
 ### Some specific perks I'm looking for
 - Office in the Market Street area
 - Ability to work from home one day/week
-- Good benefits
+- Decent healthcare
 - Collaborative environment
 
 ### Don't recruit me for
-- Visual design: I get frustrated easily trying to make things look pretty. I like UX design though!
-- Talking to lots of new people all the time: I get recruited for developer relations roles a lot but these are a very bad fit for me! I'm much too introverted.
+- Visual design: I'm bad at it and get frustrated easily trying to make things look pretty.
+- Roles that won't give me time to code. 
 
 ### Will I be a good culture fit?
-If you have a company D&D party or a band/choir/acapella group I will be a fantastic culture fit!
-
-Company cultures that value openness, trust, and mentorship are ones where I thrive. I love to help less experienced engineers and learn from my seniors.
+Company cultures that value openness, trust, and mentorship are ones where I thrive. I love to help less experienced engineers and learn from seniors.
